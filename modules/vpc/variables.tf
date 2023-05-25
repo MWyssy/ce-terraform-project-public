@@ -21,6 +21,7 @@ variable "subnets" {
   type        = map(any)
 }
 
+
 # Nat-Gateway Vars
 variable "private_subs" {
   description = "Map of the private subnets created"

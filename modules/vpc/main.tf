@@ -68,7 +68,7 @@ resource "aws_nat_gateway" "nat-gw" {
     Name      = "${var.nat_name}-${each.key}"
     UsedBy    = var.user
     ManagedBy = "Terraform"
-    Number    = 1
+    Number    = each.value["subnet_number"]
   }
 
 }

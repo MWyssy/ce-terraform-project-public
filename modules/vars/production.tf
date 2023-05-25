@@ -13,40 +13,46 @@ locals {
     # Subnet Vars
     subnets = {
       public-1 = {
-        az     = "eu-west-2a"
-        cidr   = "10.0.0.0/24"
-        public = "true"
-        name   = "public-1"
+        az            = "eu-west-2a"
+        cidr          = "10.0.0.0/24"
+        public        = "true"
+        name          = "public-1"
+        subnet_number = 1
       }
       private-1 = {
-        az     = "eu-west-2a"
-        cidr   = "10.0.1.0/24"
-        public = "false"
-        name   = "private-1"
+        az            = "eu-west-2a"
+        cidr          = "10.0.1.0/24"
+        public        = "false"
+        name          = "private-1"
+        subnet_number = 1
       }
       public-2 = {
-        az     = "eu-west-2b"
-        cidr   = "10.0.2.0/24"
-        public = "true"
-        name   = "public-2"
+        az            = "eu-west-2b"
+        cidr          = "10.0.2.0/24"
+        public        = "true"
+        name          = "public-2"
+        subnet_number = 2
       }
       private-2 = {
-        az     = "eu-west-2b"
-        cidr   = "10.0.3.0/24"
-        public = "false"
-        name   = "private-2"
+        az            = "eu-west-2b"
+        cidr          = "10.0.3.0/24"
+        public        = "false"
+        name          = "private-2"
+        subnet_number = 2
       }
       public-3 = {
-        az     = "eu-west-2c"
-        cidr   = "10.0.4.0/24"
-        public = "true"
-        name   = "public-3"
+        az            = "eu-west-2c"
+        cidr          = "10.0.4.0/24"
+        public        = "true"
+        name          = "public-3"
+        subnet_number = 3
       }
       private-3 = {
-        az     = "eu-west-2c"
-        cidr   = "10.0.5.0/24"
-        public = "false"
-        name   = "private-3"
+        az            = "eu-west-2c"
+        cidr          = "10.0.5.0/24"
+        public        = "false"
+        name          = "private-3"
+        subnet_number = 3
       }
     }
 
@@ -70,11 +76,11 @@ locals {
     instance_type = "t2.micro"
 
     # Load Balancer Vars
-    lb_name = "lb-main-staging"
+    lb_name = "lb-main-production"
 
     # Auto-Scaling Vars
     asg_name         = "asg-main-production"
-    min_size         = 2
+    min_size         = 3
     max_size         = 5
     desired_capacity = 3
 

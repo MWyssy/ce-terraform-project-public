@@ -13,28 +13,32 @@ locals {
     # Subnet Vars
     subnets = {
       public-1 = {
-        az     = "eu-west-2a"
-        cidr   = "10.0.0.0/27"
-        public = "true"
-        name   = "public-1"
+        az            = "eu-west-2a"
+        cidr          = "10.0.0.0/27"
+        public        = "true"
+        name          = "public-1"
+        subnet_number = 1
       }
       private-1 = {
-        az     = "eu-west-2a"
-        cidr   = "10.0.0.32/27"
-        public = "false"
-        name   = "private-1"
+        az            = "eu-west-2a"
+        cidr          = "10.0.0.32/27"
+        public        = "false"
+        name          = "private-1"
+        subnet_number = 1
       }
       public-2 = {
-        az     = "eu-west-2b"
-        cidr   = "10.0.0.64/27"
-        public = "true"
-        name   = "public-2"
+        az            = "eu-west-2b"
+        cidr          = "10.0.0.64/27"
+        public        = "true"
+        name          = "public-2"
+        subnet_number = 2
       }
       private-2 = {
-        az     = "eu-west-2b"
-        cidr   = "10.0.0.96/27"
-        public = "false"
-        name   = "private-2"
+        az            = "eu-west-2b"
+        cidr          = "10.0.0.96/27"
+        public        = "false"
+        name          = "private-2"
+        subnet_number = 2
       }
     }
 
