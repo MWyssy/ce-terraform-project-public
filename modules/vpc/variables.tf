@@ -27,14 +27,25 @@ variable "private_subs" {
   type        = map(any)
 }
 
+variable "nat_name" {
+  description = "Name of each Nat Gateway"
+  type        = string
+}
+
+# Route Table Vars
+variable "rt_name" {
+  description = "Name of the route tables"
+  type        = string
+}
 variable "public_subs" {
-  description = "Map of the private subnets created"
+  description = "Map of the public subnets created"
   type        = map(any)
 }
 
-variable "pub_name" {
+# Security Group Vars
+variable "sg_name" {
+  description = "Name of the Security Group"
   type        = string
-  description = "Find name of public subnet in the same az"
 }
 
 # Tags

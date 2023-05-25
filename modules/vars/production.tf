@@ -1,5 +1,8 @@
 locals {
   production = {
+    # Init
+    init = false
+
     # VPC vars
     vpc_name = "ce-vpc-production"
     vpc_cidr = "10.0.0.0/16"
@@ -47,6 +50,33 @@ locals {
       }
     }
 
+    # Nat-Gateway Vars
+    nat_name = "production-ng"
+
+    # Route Table Vars
+    rt_name = "rt-production"
+
+    # Security Group Vars
+    sg_name = "securitygroup-main-production"
+
+    # Target Group Vars
+    tg_name = "tg-main-production"
+
+    # Key-Piar Vars
+    key_name = "kp-production"
+
+    # Launch Table Vars
+    launch_name   = "launch_production"
+    instance_type = "t2.micro"
+
+    # Load Balancer Vars
+    lb_name = "lb-main-staging"
+
+    # Auto-Scaling Vars
+    asg_name         = "asg-main-production"
+    min_size         = 2
+    max_size         = 5
+    desired_capacity = 3
 
     # Tags
     user = "Customers"

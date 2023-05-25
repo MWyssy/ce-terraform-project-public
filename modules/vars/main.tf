@@ -1,6 +1,7 @@
 locals {
   environments = {
     "staging" : local.staging,
-    "production" : local.production
+    "production" : local.production,
+    "default" : local.default
   }
 }
