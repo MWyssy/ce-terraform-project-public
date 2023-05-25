@@ -81,5 +81,6 @@ resource "aws_autoscaling_group" "asg_main" {
   desired_capacity    = var.desired_capacity
   vpc_zone_identifier = [for id in var.public_subnet_ids : id]
   target_group_arns   = [aws_lb_target_group.tg_main.arn]
+  default_cooldown    = 300
 }
 

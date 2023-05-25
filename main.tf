@@ -1,14 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
-    }
-  }
-
-  required_version = ">= 1.2.0"
-}
-
 locals {
   environment = terraform.workspace
 }
@@ -18,16 +7,10 @@ module "vars" {
   environment = local.environment
 }
 
-module "s3" {
-  source = "./modules/s3"
-
-  init = module.vars.env.init
-}
-
 module "vpc" {
   source = "./modules/vpc"
 
-  count = module.s3.init ? 0 : 1
+  count = module.backend.init ? 0 : 1
 
   # VPC vars
   vpc_cidr = module.vars.env.vpc_cidr
@@ -66,6 +49,8 @@ module "vpc" {
 
 module "auto_scaling" {
   source = "./modules/auto_scaling"
+
+  count = module.backend.init ? 0 : 1
 
   sg_id             = module.vpc[0].sg_id
   public_subnet_ids = module.vpc[0].public_subnet_ids
