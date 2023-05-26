@@ -1,14 +1,19 @@
 resource "aws_s3_bucket" "ce-tf-remote-store" {
   count = var.init ? 1 : 0
 
-  bucket = var.remote_name
-
+  bucket        = var.remote_name
   force_destroy = true
 
   tags = {
     Name      = var.remote_name
     ManagedBy = "Terraform"
   }
+}
+
+resource "aws_s3_bucket_acl" "ce-tf-remote-store" {
+  depends_on = [aws_s3_bucket.ce-tf-remote-store]
+  bucket     = aws_s3_bucket.ce-tf-remote-store.id
+  acl        = "private"
 }
 
 resource "aws_dynamodb_table" "terraform-lock" {
