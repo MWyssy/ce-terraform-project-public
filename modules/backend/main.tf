@@ -1,5 +1,4 @@
 resource "aws_s3_bucket" "ce-tf-remote-store" {
-  count = var.init ? 1 : 0
 
   bucket        = var.remote_name
   force_destroy = true
@@ -10,14 +9,15 @@ resource "aws_s3_bucket" "ce-tf-remote-store" {
   }
 }
 
-resource "aws_s3_bucket_acl" "ce-tf-remote-store" {
-  depends_on = [aws_s3_bucket.ce-tf-remote-store]
-  bucket     = aws_s3_bucket.ce-tf-remote-store.id
-  acl        = "private"
+resource "aws_s3_bucket_versioning" "ce-tf-remote-store" {
+
+  bucket = aws_s3_bucket.ce-tf-remote-store.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 resource "aws_dynamodb_table" "terraform-lock" {
-  count = var.init ? 1 : 0
 
   name           = var.dydb_name
   read_capacity  = 5
