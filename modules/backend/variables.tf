@@ -6,7 +6,6 @@ variable "init" {
 variable "remote_name" {
   description = "Name of the remote store bucket"
   type        = string
-  default     = "ce-tf-remote-store"
 }
 
 variable "dydb_name" {
