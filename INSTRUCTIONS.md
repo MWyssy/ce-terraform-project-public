@@ -85,4 +85,4 @@ _However_, please make sure that your main html file is called 'index.html', if 
 
 5. Once you have finished creating the 'user_data', you can run 'terraform init' then 'terraform apply' to create the server. This will take around 5 minutes to fully set up, and may take longer if you are trying to host a larger website.
 
-Congratulations! You have a fully functioning, and highly available web-server hosting your website!
+Congratulations! You have a fully functioning, and highly available web-server hosting your website!!
