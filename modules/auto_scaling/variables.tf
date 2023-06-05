@@ -70,6 +70,12 @@ variable "desired_capacity" {
   type        = number
 }
 
+variable "filestore_name" {
+  description = "Name of the s3 Filestore"
+  type        = string
+}
+
+
 # Tags
 variable "user" {
   description = "User based on workspace"

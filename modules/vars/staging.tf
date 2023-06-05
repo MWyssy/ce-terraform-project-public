@@ -70,6 +70,9 @@ locals {
     max_size         = 1
     desired_capacity = 1
 
+    # S3 bucket
+    bucket_name = "s3-filestore-staging"
+
     #Tags
     user = "Developers"
   }

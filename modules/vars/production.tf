@@ -84,6 +84,9 @@ locals {
     max_size         = 5
     desired_capacity = 3
 
+    # S3 bucket
+    bucket_name = "s3-filestore-production"
+
     # Tags
     user = "Customers"
   }

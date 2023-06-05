@@ -50,6 +50,8 @@ module "vpc" {
 module "auto_scaling" {
   source = "./modules/auto_scaling"
 
+  depends_on = [module.s3_filestore]
+
   count = module.backend.init ? 0 : 1
 
   sg_id             = module.vpc[0].sg_id
@@ -65,8 +67,19 @@ module "auto_scaling" {
   min_size         = module.vars.env.min_size
   max_size         = module.vars.env.max_size
   desired_capacity = module.vars.env.desired_capacity
+  filestore_name   = module.s3_filestore[0].filestore_name
 
   #Tags
+  user = module.vars.env.user
+}
+
+module "s3_filestore" {
+  source = "./modules/s3_filestore"
+
+  count = module.backend.init ? 0 : 1
+
+  bucket_name = module.vars.env.bucket_name
+
   user = module.vars.env.user
 }
 
